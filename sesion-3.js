@@ -153,3 +153,19 @@ var evaluaMayor = function(num1, num2) {
 
 //console.log(evaluaMayor(2, 2));
 
+// 1 posible solución Reto 3 - Sesión 3
+
+function secuenciaFibonacci(limite) {
+  var num1 = 1;
+  var num2 = 1;
+
+  for(var i = 1; i <= limite; i++) {
+    console.log(num1);
+
+    var siguiente = num1 + num2;
+    num1 = num2;
+    num2 = siguiente;
+  }
+}
+
+secuenciaFibonacci(100);
