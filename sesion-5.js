@@ -51,6 +51,10 @@ var laura = new Persona("Laura", "Figueroa", 1991, "Diseñadora", 500);
 var maria = new Persona("Maria", "Gónzalez", 1989, "Desarrolladora", 600);
 var ismael = new Persona("Ismael", "Perez", 1992, "Consultor", 400);
 
+console.log("¿Laura es una instancia de Persona?");
+console.log(laura instanceof Persona);
+
+console.log("¿Laura es una instancia de Persona?", laura instanceof Persona);
 // console.log(laura);
 // console.log(maria);
 // console.log(ismael);
@@ -63,6 +67,9 @@ var CuentaBancaria = function(dinero) {
     return new CuentaBancaria(this.cantidad + otraCuenta.cantidad)
   }
 }
+
+console.log("¿Laura es una instancia de CuentaBancario?");
+console.log(laura instanceof CuentaBancaria);
 
 var cuentaLaura = new CuentaBancaria(500);
 var cuentaIsmael = new CuentaBancaria(400);
@@ -222,11 +229,11 @@ Person1.prototype.calcularEdad = function() {
 
 var lalo = new Person1("Eduardo", "Lopez", 1980);
 
-console.log(lalo)
-console.log(lalo.calcularEdad())
-console.log(lalo.direccion);
+//console.log(lalo)
+//console.log(lalo.calcularEdad())
+//console.log(lalo.direccion);
 
-console.log(computadora.prototype);
+//console.log(computadora.prototype);
 
 var marco = {
   name: "Marco",
@@ -238,4 +245,4 @@ var marco = {
   }
 }
 
-console.log(marco.auto.props.color);
+//console.log(marco.auto.props.color);

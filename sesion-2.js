@@ -181,14 +181,14 @@
 
 // Mostrar números pares del 0 a l 100
 
-// for(var i = 0; i <= 100; i++) {
+for(var i = 0; i <= 100; i++) {
 
-//   // Evaluar si es par a través del residuo
-//   if ((i % 2) === 0) {
-//     console.log(i)
-//   }
+  // Evaluar si es par a través del residuo
+  if ((i % 2) === 0) {
+    console.log(i)
+  }
 
-// }
+}
 
 // Ejemplo de números primos
 // Un número primo es número natural mayor a 1 que sólo es divisible entre 1 y sí mismo.
