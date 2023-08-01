@@ -1,0 +1,53 @@
+<html>
+
+<head>
+  <meta charset="utf8" />
+  <title>Reto 1: Inflar un globo</title>
+  <style>
+    div {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100%;
+    }
+  </style>
+</head>
+
+<body style="height: 100%;">
+  <div>
+    <p>🎈</p>
+  </div>
+
+  <script>
+    var p = document.querySelector("p");
+    var tamanoFuente = 16;
+
+    function modificarTamano(nuevoTamano) {
+      console.log("nuevoTamaño: ", nuevoTamano)
+      tamanoFuente = nuevoTamano;
+      p.style.fontSize = tamanoFuente + "px";
+    }
+
+    function manejaFlechas(event) {
+      if (event.key == "ArrowUp") {
+        if (tamanoFuente > 80) {
+          p.textContent = "💥";
+          document.body.removeEventListener("keydown", manejaFlechas);
+        } else {
+          //modificarTamano(tamanoFuente + 10);
+          tamanoFuente = tamanoFuente + 10;
+          p.style.fontSize = tamanoFuente + "px";
+          event.preventDefault(); // Prevenir el comportamiento por defecto de un evento (scroll)
+        }
+      } else if (event.key == "ArrowDown") {
+        tamanoFuente = tamanoFuente - 10;
+        p.style.fontSize = tamanoFuente + "px";
+        event.preventDefault();
+      }
+    }
+
+    window.addEventListener("keydown", manejaFlechas);
+  </script>
+</body>
+
+</html>

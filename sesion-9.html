@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <title>Ejemplo repaso circulo de estudio</title>
+</head>
+
+<body>
+  <h1>Todo App</h1>
+  <input type="text" id="input-tarea">
+  <button>Agregar</button>
+  <div id="lista-tareas"></div>
+  <script type="text/javascript">
+    var tareas = [];
+
+    var input = document.querySelector("#input-tarea");
+    var button = document.getElementsByTagName("button")[0];
+    var contenedorLista = document.querySelector("div");
+
+    var Tarea = function (title) {
+      this.title = title;
+      this.creation = new Date();
+    }
+
+    // Función para crear nodos de forma dinámica
+    function crearNodo(type, child) {
+      var node = document.createElement(type);
+
+      if (typeof (child) === "string") {
+        var text = document.createTextNode(child);
+        node.appendChild(text);
+      } else {
+        node.appendChild(child);
+      }
+
+      return node;
+    }
+
+    //console.log(contenedorLista)
+
+    var guardaTarea = function () {
+      //console.log("Contenido input: ", input.value);
+
+      if (Boolean(input.value)) {
+        //console.log("El input no está vacío");
+        var tarea = new Tarea(input.value);
+        tareas.push(tarea);
+        crearListaTareas();
+      }
+
+      input.value = "";
+      //console.log("tareas: ", tareas);
+    };
+
+    function eliminarListaDuplicada() {
+      var hijoContenedor = contenedorLista.firstChild
+      if (Boolean(hijoContenedor)) {
+        contenedorLista.removeChild(hijoContenedor);
+      }
+    }
+
+    var crearListaTareas = function () {
+      var lista = document.createElement("ul");
+
+      // for (var i = 0; i < tareas.length; i++) {
+      //   var elementoDeLista = document.createElement("li");
+      //   elementoDeLista.textContent = tareas[i].title;
+      //   //console.log("elemento de lista: ", elementoDeLista);
+      //   lista.appendChild(elementoDeLista);
+      // }
+
+      // Itera sobre cada elemento de la lista
+      var elementosDeLista = tareas.map(function(tarea) {
+        var elementoDeLista = document.createElement("li");
+        elementoDeLista.textContent = tarea.title;
+        return elementoDeLista
+      });
+
+      // for (var i = 0; i < elementosDeLista.length; i++) {
+      //   lista.append(elementosDeLista[i]);
+      // }
+      lista.append(...elementosDeLista)
+
+      eliminarListaDuplicada();
+
+      contenedorLista.appendChild(lista);
+    };
+
+    button.addEventListener("click", guardaTarea);
+  </script>
+</body>
+
+</html>

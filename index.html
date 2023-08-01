@@ -11,156 +11,132 @@
     table {
       padding: 120px 0px;
     }
+
+    h1 {
+      color: goldenrod;
+      font-family: sans-serif;
+    }
   </style>
 </head>
 
 <body>
-  <h1 id="title">DOM Document Object Model</h1>
-  <p class="subtitle">
-    Hello world!
-  </p>
-  <a id="link">Hola soy un link</a>
-  <p>
-    Here is a <a href="#">link</a>
-  </p>
-  <p class="number">Uno</p>
-  <p class="number">Dos</p>
-  <p class="number">Tres</p>
+  
+  <!-- <p>No hay <i>handler</i> aquí</p>
+  <button>Aquí sí hay <i>handler</i></button>
+  <p>No hay <i>handler</i> aquí tampoco</p> -->
 
-  <img src="https://picsum.photos/200/300" alt="First Image" />
-  <img src="https://picsum.photos/200/300" alt="Second Image" />
-  <img src="https://picsum.photos/200/300" alt="Third Image" />
+  <!-- <h1 id="title" style="color: goldenrod;">Interacción entre eventos y DOM</h1>
 
-  <div id="mountains"></div>
+  <button id="red">Rojo</button>
+  <button id="green">Verde</button>
+  <button id="blue">Azul</button>
+  
+  <button id="events">Eventos</button>
+
+  <div>
+    <p>Ejemplo de evento</p>
+    <h2 id="content">Hola mundo</h2>
+    <input type="text" id="text" />
+  </div> -->
+
+  <h2 id="title">Presiona Enter para hacer esta página azul.</h2>
+  <h2 class="title">Presiona Ctrl + Enter para hacer esta página naranja.</h2>
 
   <!-- <script type="text/javascript" src="./sesion-6.js"></script> -->
   <script type="text/javascript">
-    // ACCEDER A ELEMENTOS DEL DOM A TRAVÉS DE JAVASCRIPT
+    // Handler
+    // window.addEventListener("click", function() {
+    //   console.log("Hola mundo");
+    // });
 
-    // console.log(document)
-    // seleccionar elementos por nombre de etiqueta
-    // console.log("Elemento <a>: ", document.body.getElementsByTagName("a"))
-    var links = document.body.getElementsByTagName("a");
-    var link = links[0];
-    //console.log("1er Link: ", link);
+    // var button = document.querySelector("button");
 
-    // seleccionar un elemento por id
-    // console.log("id title: ", document.getElementById("title"))
+    // function unaVez() {
+    //   console.log("Botón presionado 1 vez");
+    //   button.removeEventListener("click", unaVez);
+    // };
+    
+    // console.log(button);
+    // button.addEventListener("click", unaVez);
 
-    // seleccionar elementos por atributo class
-    // console.log("clase text: ",document.body.getElementsByClassName("subtitle"))
-    var subtitle = document.body.getElementsByClassName("subtitle")[0];
-    subtitle.textContent = "Hola desde Javascript";
-    //console.log("Párrafo subtitle: ", subtitle);
+    // Ejemplo manejo de eventos y DOM 
 
+    // var title = document.getElementById("title");
 
-    // Ejemplo de manipulación del DOM
+    // var buttonRed = document.getElementById("red");
+    // var buttonGreen = document.getElementById("green");
+    // var buttonBlue = document.getElementById("blue");
 
-    var parrafos = document.body.getElementsByClassName("number");
-    //console.log("párrafos: ", parrafos)
+    // var buttonEvents = document.getElementById("events");
 
-    document.body.insertBefore(parrafos[2], parrafos[0]);
+    // console.log(title, buttonRed, buttonGreen, buttonBlue);
 
-    // Ejemplo de creación de nodos
+    // buttonRed.addEventListener("click", function(event) {
+    //   title.style.fontFamily = "serif";
+    //   title.style.backgroundColor = "pink";
+    //   title.style.color = "red";
+    // });
 
-    function crearNodo(type, child) {
-      var node = document.createElement(type);
+    // buttonGreen.addEventListener("click", function(event) {
+    //   title.style.backgroundColor = "aquamarine";
+    //   title.style.color = "green";
+    // });
 
-      if (typeof (child) === "string") {
-        var text = document.createTextNode(child);
-        node.appendChild(text);
-      } else {
-        node.appendChild(child);
-      }
+    // buttonBlue.addEventListener("click", function(event) {
+    //   title.style.backgroundColor = "seashell";
+    //   title.style.color = "blue";
+    // });
 
-      return node;
-    }
+    // buttonEvents.addEventListener("mousedown", function(event) {
+    //   console.log(event);
+    //   if (event.button === 0) {
+    //     console.log("Botón izquierdo del mouse")
+    //   } else if (event.button === 1) {
+    //     console.log("Botón medio del mouse")
+    //   } else if (event.button === 2) {
+    //     console.log("Botón derecho del mouse")
+    //   }
+    // });
 
-    // var h2 = document.createElement("h2");
+    // Ejemplo 2 - Detalle del evento
 
-    // var text = document.createTextNode("Hola desde el nodo h2");
-    // console.log("text: ", text);
+    // var h2 = document.getElementById("content");
+    // var input = document.querySelector("input");
 
-    // h2.appendChild(text);
-    // console.log("h2", h2)
+    // console.log(h2, input)
 
-    var nuevoContenido = crearNodo("p", crearNodo("strong", "Hola soy un nodo creado"))
+    // input.addEventListener("input", function(event) {
+    //   console.log(event)
+    //   var valorDelInput = event.target.value;
+    //   h2.textContent = valorDelInput;
+    // });
 
-    document.body.appendChild(nuevoContenido);
+    // Ejemplo 3 - Detalle de eventos del teclado
 
-    link.href = "https://google.com"
-    link.className = "linkColor";
-    //console.log("link: ", link);
+    // window.addEventListener("keydown", function(event) {
+    //   if (event.key === "Enter") {
+    //     document.body.style.backgroundColor = "lightblue";
+    //   }
 
-    // Solución RETO 1
+    //   if (event.key === "Enter" && event.ctrlKey) {
+    //     document.body.style.backgroundColor = "orange";
+    //   }
+    // })
 
-    var images = document.body.getElementsByTagName("img");
+    // window.addEventListener("keyup", function(event) {
+    //   if (event.key === "Enter") {
+    //     document.body.style.backgroundColor = "white";
+    //   }
+    // });
 
-    for (var i = images.length - 1; i >= 0; i--) {
-      var image = images[i];
-      if (Boolean(image.alt)) {
-        var text = document.createTextNode(image.alt);
-        image.parentNode.replaceChild(text, image);
-      }
-    }
+    // Uso de querySelector
 
-    // Solución RETO 2
+    var tituloTag = document.querySelector("h2");
+    var tituloClass = document.querySelector(".title");
+    var tituloId = document.querySelector("#title");
 
-    var data = [
-      { name: "Kilimanjaro", height: 5895, place: "Tanzania" },
-      { name: "Everest", height: 8848, place: "Nepal" },
-      { name: "Mount Fuji", height: 3776, place: "Japan" },
-      { name: "Vaalserberg", height: 323, place: "Netherlands" },
-      { name: "Denali", height: 6168, place: "United States" },
-      { name: "Popocatepetl", height: 5465, place: "Mexico" },
-      { name: "Mont Blanc", height: 4808, place: "Italy/France" }
-    ];
+    // console.log(titulo1)
 
-    function buildTable(data) {
-      // Crear tabla
-      var table = document.createElement("table");
-
-      // Obtener propiedades del primer objeto
-      var fields = Object.keys(data[0]);
-
-      // Crear encabezado
-      var headRow = document.createElement("tr");
-
-      // Iterar cada elemento del encabezado
-      fields.forEach(function (field) {
-        var headCell = document.createElement("th");
-        headCell.appendChild(document.createTextNode(field));
-        headRow.appendChild(headCell);
-      });
-      // Agregar encabezado a tabla
-      table.appendChild(headRow);
-
-      // Iterar sobre cada objeto de data
-      data.forEach(function (object) {
-        // Crear renglón
-        var row = document.createElement("tr");
-
-        // Por cada propiedad iterar
-        fields.forEach(function (field) {
-
-          // Crear celda
-          var cell = document.createElement("td");
-          cell.appendChild(document.createTextNode(object[field]));
-          // Si el valor es numérico, agregar estilo
-          if (typeof object[field] == "number") {
-            cell.style.textAlign = "right";
-          }
-          // Añadir celda a renglón
-          row.appendChild(cell);
-        });
-        // Añadir renglón a la tabla
-        table.appendChild(row);
-      });
-
-      return table;
-    }
-
-    document.getElementById("mountains").appendChild(buildTable(data));
   </script>
 </body>
 
